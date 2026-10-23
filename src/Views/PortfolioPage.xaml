@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="PersonalFinance.Views.PortfolioPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:PersonalFinance.Models"
+    xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="viewModels:PortfolioViewModel"
+    Title="Portfolio">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadCommand}" />
+    </ContentPage.Behaviors>
+
+    <Grid>
+
+        <ScrollView>
+
+            <VerticalStackLayout
+                Padding="16"
+                Spacing="16">
+
+                <!-- Portfolio Value -->
+
+                <Border
+                    Padding="16"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}"
+                    Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout>
+
+                        <Label
+                            Text="Total Portfolio Value"
+                            FontSize="14"
+                            TextColor="Gray" />
+
+                        <Label
+                            Text="{Binding TotalPortfolioValue, StringFormat='₹ {0:N2}'}"
+                            FontSize="30"
+                            FontAttributes="Bold"
+                            TextColor="Green" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- Asset Allocation -->
+
+                <Label
+                    Text="Asset Allocation"
+                    FontSize="20"
+                    FontAttributes="Bold" />
+
+                <CollectionView
+                    ItemsSource="{Binding AssetAllocations}"
+                    SelectionMode="None">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate
+                            x:DataType="models:AssetAllocationSummary">
+
+                            <Border
+                                Margin="0,4"
+                                Padding="12"
+                                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}"
+                                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+
+                                <Grid
+                                    ColumnDefinitions="*,Auto">
+
+                                    <VerticalStackLayout>
+
+                                        <Label
+                                            Text="{Binding AssetType}"
+                                            FontAttributes="Bold"
+                                            FontSize="15" />
+
+                                            <Label
+                                            Text="{Binding Amount,
+                                                           StringFormat='₹ {0:N2}'}"
+                                            FontSize="12"
+                                            TextColor="Gray" />
+
+                                    </VerticalStackLayout>
+
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding Percentage,
+                                                       StringFormat='{0:F1}%'}"
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        VerticalOptions="Center" />
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+                <!-- Assets -->
+
+                <Label
+                    Text="Assets"
+                    FontSize="20"
+                    FontAttributes="Bold" />
+
+                <CollectionView
+                    ItemsSource="{Binding Assets}"
+                    SelectionMode="None">
+
+                    <CollectionView.EmptyView>
+
+                        <Label
+                            Text="No assets found"
+                            HorizontalOptions="Center"
+                            TextColor="Gray" />
+
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate
+                            x:DataType="models:Asset">
+
+                            <Border
+                                Margin="0,4"
+                                Padding="12"
+                                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}"
+                                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+
+                                <Border.GestureRecognizers>
+
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}},
+                                                          Path=BindingContext.AssetTappedCommand}"
+                                        CommandParameter="{Binding}" />
+
+                                </Border.GestureRecognizers>
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <VerticalStackLayout
+                                        Spacing="4">
+
+                                        <Label
+                                            Text="{Binding Name}"
+                                            FontSize="16"
+                                            FontAttributes="Bold" />
+
+                                        <Label
+                                            Text="{Binding AssetType.Name}"
+                                            FontSize="12"
+                                            TextColor="Gray" />
+
+                                        <Label
+                                            Text="{Binding Amount,
+                                                           StringFormat='₹ {0:N2}'}"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="Green" />
+
+                                    </VerticalStackLayout>
+
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="›"
+                                        FontSize="20"
+                                        TextColor="Gray"
+                                        VerticalOptions="Center" />
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <!-- Floating Add Button -->
+
+        <Button
+            Text="+"
+            WidthRequest="60"
+            HeightRequest="60"
+            CornerRadius="30"
+            FontSize="26"
+            Margin="20"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Command="{Binding AddAssetCommand}" />
+
+    </Grid>
+
+</ContentPage>

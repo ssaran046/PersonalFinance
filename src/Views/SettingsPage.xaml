@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="PersonalFinance.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
+    x:DataType="viewModels:SettingsViewModel">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="12">
+
+            <Label
+                Text="Settings"
+                FontSize="28"
+                FontAttributes="Bold" />
+
+            <!-- Categories -->
+            <Border
+                Padding="16"
+                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Label
+                        Text="Categories"
+                        FontSize="18"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="›"
+                        FontSize="22"
+                        TextColor="Gray"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenCategoriesCommand}" />
+                    </Grid.GestureRecognizers>
+
+                </Grid>
+
+            </Border>
+
+            <!-- Asset Types -->
+            <Border
+                Padding="16"
+                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Label
+                        Text="Asset Types"
+                        FontSize="18"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="›"
+                        FontSize="22"
+                        TextColor="Gray"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenAssetTypesCommand}" />
+                    </Grid.GestureRecognizers>
+
+                </Grid>
+
+            </Border>
+
+            <!-- Backup/Restore -->
+            <Border
+                Padding="16"
+                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Label
+                        Text="Backup/Restore"
+                        FontSize="18"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="›"
+                        FontSize="22"
+                        TextColor="Gray"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenBackupRestoreCommand}" />
+                    </Grid.GestureRecognizers>
+
+                </Grid>
+
+            </Border>
+
+            <!-- About -->
+            <Border
+                Padding="16"
+                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Label
+                        Text="About"
+                        FontSize="18"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="›"
+                        FontSize="22"
+                        TextColor="Gray"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenAboutCommand}" />
+                    </Grid.GestureRecognizers>
+
+                </Grid>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

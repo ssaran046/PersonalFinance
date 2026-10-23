@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="PersonalFinance.Views.ExpensesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
+    xmlns:models="clr-namespace:PersonalFinance.Models"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="viewModels:ExpensesViewModel">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadCommand}" />
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Monthly Summary -->
+
+        <Border
+            Grid.Row="0"
+            Margin="10,10,10,5"
+            Padding="15"
+            BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}"
+            Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="15">
+
+                <Picker
+                    Title="Select Month"
+                    ItemsSource="{Binding Months}"
+                    SelectedItem="{Binding SelectedMonth}" />
+
+                <Grid ColumnDefinitions="*,*">
+
+                    <VerticalStackLayout>
+
+                        <Label
+                            Text="Total Spent"
+                            FontSize="12"
+                            TextColor="Gray" />
+
+                        <Label
+                            Text="{Binding MonthlyTotal, StringFormat='₹{0:N2}'}"
+                            FontSize="22"
+                            FontAttributes="Bold" />
+
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1">
+
+                        <Label
+                            Text="Daily Average"
+                            FontSize="12"
+                            TextColor="Gray" />
+
+                        <Label
+                            Text="{Binding DailyAverage, StringFormat='₹{0:N2}'}"
+                            FontSize="22"
+                            FontAttributes="Bold" />
+
+                    </VerticalStackLayout>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+        <!-- Expense List -->
+
+        <CollectionView
+            Grid.Row="1"
+            IsGrouped="True"
+            ItemsSource="{Binding ExpenseGroups}"
+            SelectionMode="None">
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout
+                    Padding="40"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Label
+                        Text="No expenses added yet"
+                        FontSize="18"
+                        TextColor="Gray" />
+
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <!-- Group Header -->
+
+            <CollectionView.GroupHeaderTemplate>
+
+                <DataTemplate x:DataType="models:ExpenseGroup">
+
+                    <Grid
+                        Padding="12,8"
+                        Margin="0,8,0,0"
+                        ColumnDefinitions="*,Auto">
+
+                        <Label
+                            Text="{Binding Header}"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding TotalAmount, StringFormat='₹{0:N2}'}"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+
+                    </Grid>
+
+                </DataTemplate>
+
+            </CollectionView.GroupHeaderTemplate>
+
+            <!-- Expense Item -->
+
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate x:DataType="models:Expense">
+
+                    <Border
+                        Margin="8,4"
+                        Padding="14,10"
+                        StrokeThickness="1"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2A2A}"
+                        Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="{AppThemeBinding Light=Black, Dark=White}"
+                                Opacity="{AppThemeBinding Light=0.08, Dark=0.05}"
+                                Radius="8"
+                                Offset="0,2" />
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource Mode=FindAncestor, AncestorType={x:Type CollectionView}},
+                                                  Path=BindingContext.ExpenseTappedCommand}"
+                                CommandParameter="{Binding}" />
+                        </Border.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="*,Auto,Auto">
+
+                            <VerticalStackLayout
+                                Grid.Column="0"
+                                Spacing="3">
+
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="{AppThemeBinding Light=#111827, Dark=#FFFFFF}" />
+
+                                <Label
+                                    Text="{Binding Category.Name}"
+                                    FontSize="14"
+                                    TextColor="{AppThemeBinding Light=#757575, Dark=#B0B0B0}" />
+
+                            </VerticalStackLayout>
+
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding Amount, StringFormat='₹{0:N2}'}"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}" />
+
+                            <Label
+                                Grid.Column="2"
+                                Margin="10,0,0,0"
+                                Text=">"
+                                FontSize="22"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light=#BDBDBD, Dark=#707070}" />
+
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <!-- Floating Add Button -->
+
+        <Button
+            Text="+"
+            WidthRequest="60"
+            HeightRequest="60"
+            CornerRadius="30"
+            FontSize="26"
+            FontAttributes="Bold"
+            Margin="20"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Command="{Binding AddExpenseCommand}" />
+
+    </Grid>
+
+</ContentPage>

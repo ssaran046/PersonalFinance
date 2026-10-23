@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512">
+
+  <!-- Title -->
+
+  <text x="256"
+        y="240"
+        text-anchor="middle"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="42"
+        font-weight="700"
+        fill="#FFFFFF">
+    PERSONAL FINANCE
+  </text>
+
+  <!-- Subtitle -->
+
+  <text x="256"
+        y="285"
+        text-anchor="middle"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="18"
+        fill="#FFFFFF"
+        opacity="0.85">
+    Track • Invest • Grow
+  </text>
+
+</svg>

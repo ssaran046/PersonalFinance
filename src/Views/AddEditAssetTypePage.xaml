@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="PersonalFinance.Views.AddEditAssetTypePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
+    x:DataType="viewModels:AddEditAssetTypeViewModel"
+    Title="{Binding PageTitle}">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="20">
+
+            <Label
+                Text="Asset Type"
+                FontAttributes="Bold" />
+
+            <Entry
+                Placeholder="Enter asset type"
+                Text="{Binding Name}" />
+
+            <Button
+                Text="Save"
+                Command="{Binding SaveCommand}" />
+
+            <Button
+                Text="Delete"
+                Command="{Binding DeleteCommand}"
+                BackgroundColor="IndianRed"
+                TextColor="White"
+                IsVisible="{Binding IsEditMode}" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
