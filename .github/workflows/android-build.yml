@@ -1,0 +1,49 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.425'
+
+      - name: Verify SDK
+        run: dotnet --version
+
+      - name: Install MAUI Workloads
+        run: dotnet workload install maui
+
+      - name: Restore
+        run: dotnet restore PersonalFinance.sln
+
+      - name: Publish Android
+        run: >
+          dotnet publish
+          src/PersonalFinance.csproj
+          -f net8.0-android
+          -c Release
+
+      - name: Rename APK
+        shell: pwsh
+        run: |
+          $apk = Get-ChildItem `
+            "src/bin/Release/net8.0-android/publish" `
+            -Filter "*.apk" |
+            Select-Object -First 1
+
+          Copy-Item $apk.FullName "PersonalFinance.apk"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: PersonalFinance-APK
+          path: PersonalFinance.apk
