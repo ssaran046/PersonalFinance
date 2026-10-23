@@ -26,8 +26,8 @@
                     <Border
                         Margin="10,4"
                         Padding="16"
-                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}"
-                        Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+                        BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}"
+                        Stroke="{toolkit:AppThemeResource CardStrokeColor}">
 
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10" />
@@ -46,13 +46,13 @@
 
                                 <Label
                                     Text="{Binding Name}"
-                                    FontSize="16"
+                                    FontSize="15"
                                     FontAttributes="Bold" />
 
                                 <Label
                                     Text="Default"
                                     FontSize="12"
-                                    TextColor="Orange"
+                                    TextColor="{StaticResource WarningColor}"
                                     IsVisible="{Binding IsDefault}" />
 
                             </VerticalStackLayout>
@@ -60,8 +60,8 @@
                             <Label
                                 Grid.Column="1"
                                 Text="›"
-                                FontSize="20"
-                                TextColor="Gray"
+                                FontSize="18"
+                                TextColor="{toolkit:AppThemeResource ChevronTextColor}"
                                 VerticalOptions="Center" />
 
                         </Grid>
@@ -75,10 +75,10 @@
 
         <Button
             Text="+"
-            WidthRequest="60"
-            HeightRequest="60"
-            CornerRadius="30"
-            FontSize="26"
+            WidthRequest="56"
+            HeightRequest="56"
+            CornerRadius="28"
+            FontSize="22"
             Margin="20"
             HorizontalOptions="End"
             VerticalOptions="End"

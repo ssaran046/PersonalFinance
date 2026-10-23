@@ -5,6 +5,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:DataType="viewModels:SettingsViewModel">
 
     <ScrollView>
@@ -13,16 +14,44 @@
             Padding="16"
             Spacing="12">
 
-            <Label
-                Text="Settings"
-                FontSize="28"
-                FontAttributes="Bold" />
+            <!-- Themes -->
+            <Border
+                Padding="16"
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Label
+                        Text="Themes"
+                        FontSize="17"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="›"
+                        FontSize="20"
+                        TextColor="{toolkit:AppThemeResource ChevronTextColor}"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenThemeOptionsCommand}" />
+                    </Grid.GestureRecognizers>
+
+                </Grid>
+
+            </Border>
 
             <!-- Categories -->
             <Border
                 Padding="16"
-                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
-                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
@@ -32,14 +61,14 @@
 
                     <Label
                         Text="Categories"
-                        FontSize="18"
+                        FontSize="17"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="1"
                         Text="›"
-                        FontSize="22"
-                        TextColor="Gray"
+                        FontSize="20"
+                        TextColor="{toolkit:AppThemeResource ChevronTextColor}"
                         VerticalOptions="Center" />
 
                     <Grid.GestureRecognizers>
@@ -54,8 +83,8 @@
             <!-- Asset Types -->
             <Border
                 Padding="16"
-                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
-                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
@@ -65,14 +94,14 @@
 
                     <Label
                         Text="Asset Types"
-                        FontSize="18"
+                        FontSize="17"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="1"
                         Text="›"
-                        FontSize="22"
-                        TextColor="Gray"
+                        FontSize="20"
+                        TextColor="{toolkit:AppThemeResource ChevronTextColor}"
                         VerticalOptions="Center" />
 
                     <Grid.GestureRecognizers>
@@ -87,8 +116,8 @@
             <!-- Backup/Restore -->
             <Border
                 Padding="16"
-                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
-                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
@@ -98,14 +127,14 @@
 
                     <Label
                         Text="Backup/Restore"
-                        FontSize="18"
+                        FontSize="17"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="1"
                         Text="›"
-                        FontSize="22"
-                        TextColor="Gray"
+                        FontSize="20"
+                        TextColor="{toolkit:AppThemeResource ChevronTextColor}"
                         VerticalOptions="Center" />
 
                     <Grid.GestureRecognizers>
@@ -120,8 +149,8 @@
             <!-- About -->
             <Border
                 Padding="16"
-                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}"
-                BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}">
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
@@ -131,14 +160,14 @@
 
                     <Label
                         Text="About"
-                        FontSize="18"
+                        FontSize="17"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="1"
                         Text="›"
-                        FontSize="22"
-                        TextColor="Gray"
+                        FontSize="20"
+                        TextColor="{toolkit:AppThemeResource ChevronTextColor}"
                         VerticalOptions="Center" />
 
                     <Grid.GestureRecognizers>
