@@ -37,6 +37,7 @@ public static class MauiProgram
             options => options.UseSqlite($"Data Source={dbPath}"));
 
         // Services
+        builder.Services.AddSingleton<IThemeService, ThemeService>();
         builder.Services.AddScoped<IExpenseService, ExpenseService>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IAssetService, AssetService>();

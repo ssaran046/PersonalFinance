@@ -1,28 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 512 512">
-
-  <!-- Title -->
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Single-line title -->
   <text x="256"
-        y="240"
+        y="245"
         text-anchor="middle"
         font-family="Segoe UI, Arial, sans-serif"
-        font-size="42"
+        font-size="46"
         font-weight="700"
+        letter-spacing="0"
         fill="#FFFFFF">
     PERSONAL FINANCE
   </text>
 
   <!-- Subtitle -->
-
   <text x="256"
-        y="285"
+        y="318"
         text-anchor="middle"
         font-family="Segoe UI, Arial, sans-serif"
-        font-size="18"
+        font-size="28"
         fill="#FFFFFF"
-        opacity="0.85">
+        opacity="0.92">
     Track • Invest • Grow
   </text>
-
 </svg>

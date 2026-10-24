@@ -9,21 +9,37 @@
     Title="PersonalFinance">
 
     <TabBar>
-        <ShellContent
+        <Tab
             Title="Dashboard"
-            ContentTemplate="{DataTemplate views:DashboardPage}"/>
+            Icon="tab_home.svg">
+            <ShellContent
+                Title="Dashboard"
+                ContentTemplate="{DataTemplate views:DashboardPage}" />
+        </Tab>
 
-        <ShellContent
+        <Tab
             Title="Expenses"
-            ContentTemplate="{DataTemplate views:ExpensesPage}"/>
+            Icon="tab_expenses.svg">
+            <ShellContent
+                Title="Expenses"
+                ContentTemplate="{DataTemplate views:ExpensesPage}" />
+        </Tab>
 
-        <ShellContent
+        <Tab
             Title="Portfolio"
-            ContentTemplate="{DataTemplate views:PortfolioPage}"/>
-        <ShellContent
+            Icon="tab_portfolio.svg">
+            <ShellContent
+                Title="Portfolio"
+                ContentTemplate="{DataTemplate views:PortfolioPage}" />
+        </Tab>
+
+        <Tab
             Title="Settings"
-            ContentTemplate="{DataTemplate views:SettingsPage}"/>
+            Icon="tab_settings.svg">
+            <ShellContent
+                Title="Settings"
+                ContentTemplate="{DataTemplate views:SettingsPage}" />
+        </Tab>
     </TabBar>
-    
 
 </Shell>

@@ -5,67 +5,84 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
-    x:DataType="viewModels:AddExpenseViewModel">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="viewModels:AddExpenseViewModel"
+    Title="{Binding PageTitle}">
 
     <ScrollView>
 
         <VerticalStackLayout
-            Padding="20"
+            Padding="16"
             Spacing="12">
 
-            <Label
-                Text="{Binding PageTitle}"
-                FontSize="24"
-                FontAttributes="Bold" />
+            <Border
+                Padding="16"
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
 
-            <Entry
-                Placeholder="Expense Name"
-                Text="{Binding Name}" 
-                FontSize="16"/>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
 
-            <Picker
-                Title="Category"
-                FontSize="16"
-                ItemsSource="{Binding Categories}"
-                ItemDisplayBinding="{Binding Name}"
-                SelectedItem="{Binding SelectedCategory}" />
+                <VerticalStackLayout Spacing="12">
 
-            <Entry
-                Placeholder="Amount"
-                FontSize="16"
-                Keyboard="Numeric"
-                Text="{Binding Amount}" />
+                    <Label
+                        Text="{Binding PageTitle}"
+                        FontSize="22"
+                        FontAttributes="Bold" />
 
-            <DatePicker
-                FontSize="16"
-                Date="{Binding Date}" />
+                    <Entry
+                        Placeholder="Expense Name"
+                        Text="{Binding Name}"
+                        FontSize="16" />
 
-            <Editor
-                FontSize="16"
-                HeightRequest="100"
-                Placeholder="Notes"
-                Text="{Binding Notes}" />
+                    <Picker
+                        Title="Category"
+                        FontSize="16"
+                        ItemsSource="{Binding Categories}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCategory}" />
 
-            <Grid
-                ColumnDefinitions="*,*"
-                ColumnSpacing="10">
+                    <Entry
+                        Placeholder="Amount"
+                        FontSize="16"
+                        Keyboard="Numeric"
+                        Text="{Binding Amount}" />
 
-                <Button
-                    Grid.Column="0"
-                    Text="Delete"
-                    FontSize="16"
-                    BackgroundColor="Red"
-                    TextColor="White"
-                    IsVisible="{Binding IsEditMode}"
-                    Command="{Binding DeleteCommand}" />
+                    <DatePicker
+                        FontSize="16"
+                        Date="{Binding Date}" />
 
-                <Button
-                    Grid.Column="1"
-                    Text="Save"
-                    FontSize="16"
-                    Command="{Binding SaveCommand}" />
+                    <Editor
+                        FontSize="16"
+                        HeightRequest="100"
+                        Placeholder="Notes"
+                        Text="{Binding Notes}" />
 
-            </Grid>
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <Button
+                            Grid.Column="0"
+                            Text="Delete"
+                            FontSize="16"
+                            BackgroundColor="{DynamicResource DangerColor}"
+                            TextColor="{StaticResource White}"
+                            IsVisible="{Binding IsEditMode}"
+                            Command="{Binding DeleteCommand}" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="Save"
+                            FontSize="16"
+                            Command="{Binding SaveCommand}" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
 
         </VerticalStackLayout>
 

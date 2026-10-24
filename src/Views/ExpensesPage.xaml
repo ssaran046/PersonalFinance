@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage
     x:Class="PersonalFinance.Views.ExpensesPage"
@@ -23,8 +23,8 @@
             Grid.Row="0"
             Margin="10,10,10,5"
             Padding="15"
-            BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2E}"
-            Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+            BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}"
+            Stroke="{toolkit:AppThemeResource CardStrokeColor}">
 
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="12" />
@@ -44,11 +44,11 @@
                         <Label
                             Text="Total Spent"
                             FontSize="12"
-                            TextColor="Gray" />
+                            TextColor="{toolkit:AppThemeResource MutedTextColor}" />
 
                         <Label
                             Text="{Binding MonthlyTotal, StringFormat='₹{0:N2}'}"
-                            FontSize="22"
+                            FontSize="20"
                             FontAttributes="Bold" />
 
                     </VerticalStackLayout>
@@ -58,11 +58,11 @@
                         <Label
                             Text="Daily Average"
                             FontSize="12"
-                            TextColor="Gray" />
+                            TextColor="{toolkit:AppThemeResource MutedTextColor}" />
 
                         <Label
                             Text="{Binding DailyAverage, StringFormat='₹{0:N2}'}"
-                            FontSize="22"
+                            FontSize="20"
                             FontAttributes="Bold" />
 
                     </VerticalStackLayout>
@@ -89,8 +89,8 @@
 
                     <Label
                         Text="No expenses added yet"
-                        FontSize="18"
-                        TextColor="Gray" />
+                        FontSize="16"
+                        TextColor="{toolkit:AppThemeResource MutedTextColor}" />
 
                 </VerticalStackLayout>
             </CollectionView.EmptyView>
@@ -108,16 +108,16 @@
 
                         <Label
                             Text="{Binding Header}"
-                            FontSize="18"
+                            FontSize="17"
                             FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+                            TextColor="{toolkit:AppThemeResource HeaderAccentColor}" />
 
                         <Label
                             Grid.Column="1"
                             Text="{Binding TotalAmount, StringFormat='₹{0:N2}'}"
-                            FontSize="18"
+                            FontSize="17"
                             FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+                            TextColor="{toolkit:AppThemeResource HeaderAccentColor}" />
 
                     </Grid>
 
@@ -135,8 +135,8 @@
                         Margin="8,4"
                         Padding="14,10"
                         StrokeThickness="1"
-                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2A2A}"
-                        Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#404040}">
+                        BackgroundColor="{toolkit:AppThemeResource CardAltBackgroundColor}"
+                        Stroke="{toolkit:AppThemeResource CardStrokeColor}">
 
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10" />
@@ -165,32 +165,30 @@
 
                                 <Label
                                     Text="{Binding Name}"
-                                    FontSize="16"
-                                    FontAttributes="Bold"
-                                    TextColor="{AppThemeBinding Light=#111827, Dark=#FFFFFF}" />
+                                    FontSize="15"
+                                    FontAttributes="Bold" />
 
                                 <Label
                                     Text="{Binding Category.Name}"
-                                    FontSize="14"
-                                    TextColor="{AppThemeBinding Light=#757575, Dark=#B0B0B0}" />
+                                    FontSize="13"
+                                    TextColor="{toolkit:AppThemeResource MutedTextColor}" />
 
                             </VerticalStackLayout>
 
                             <Label
                                 Grid.Column="1"
                                 Text="{Binding Amount, StringFormat='₹{0:N2}'}"
-                                FontSize="18"
+                                FontSize="17"
                                 FontAttributes="Bold"
-                                VerticalOptions="Center"
-                                TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}" />
+                                VerticalOptions="Center" />
 
                             <Label
                                 Grid.Column="2"
                                 Margin="10,0,0,0"
                                 Text=">"
-                                FontSize="22"
+                                FontSize="20"
                                 VerticalOptions="Center"
-                                TextColor="{AppThemeBinding Light=#BDBDBD, Dark=#707070}" />
+                                TextColor="{toolkit:AppThemeResource ChevronTextColor}" />
 
                         </Grid>
 
@@ -206,10 +204,10 @@
 
         <Button
             Text="+"
-            WidthRequest="60"
-            HeightRequest="60"
-            CornerRadius="30"
-            FontSize="26"
+            WidthRequest="56"
+            HeightRequest="56"
+            CornerRadius="28"
+            FontSize="22"
             FontAttributes="Bold"
             Margin="20"
             HorizontalOptions="End"

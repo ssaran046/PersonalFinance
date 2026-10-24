@@ -2,7 +2,8 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
@@ -27,6 +28,18 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+
+    <toolkit:AppThemeColor x:Key="CardBackgroundColor" Light="#FFFFFF" Dark="#2C2C2E" />
+    <toolkit:AppThemeColor x:Key="CardAltBackgroundColor" Light="#FFFFFF" Dark="#2A2A2A" />
+    <toolkit:AppThemeColor x:Key="CardStrokeColor" Light="#E5E7EB" Dark="#404040" />
+    <toolkit:AppThemeColor x:Key="MutedTextColor" Light="#757575" Dark="#B0B0B0" />
+    <toolkit:AppThemeColor x:Key="ChevronTextColor" Light="#BDBDBD" Dark="#707070" />
+    <toolkit:AppThemeColor x:Key="HeaderAccentColor" Light="#5B3FD4" Dark="#A78BFA" />
+    <toolkit:AppThemeColor x:Key="ThemeSelectionAccentColor" Light="#5B3FD4" Dark="#A78BFA" />
+
+    <Color x:Key="DangerColor">IndianRed</Color>
+    <Color x:Key="SuccessColor">Green</Color>
+    <Color x:Key="WarningColor">Orange</Color>
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

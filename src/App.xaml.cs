@@ -1,12 +1,17 @@
-﻿namespace PersonalFinance
+﻿using PersonalFinance.Services.Interfaces;
+
+namespace PersonalFinance
 {
     public partial class App : Application
     {
-        public App()
+        public App(
+            IThemeService themeService)
         {
             InitializeComponent();
 
-            UserAppTheme = AppTheme.Light;
+            themeService.ApplyTheme(
+                themeService.CurrentTheme);
+
             MainPage = new AppShell();
         }
     }

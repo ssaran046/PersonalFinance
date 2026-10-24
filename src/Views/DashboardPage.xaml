@@ -31,39 +31,39 @@
 
                     <Label
                     Text="Expense Summary"
-                    FontSize="18"
+                    FontSize="16"
                     FontAttributes="Bold" />
 
                     <Grid ColumnDefinitions="*,Auto">
 
-                        <Label Text="Today" FontSize="16"/>
+                        <Label Text="Today" FontSize="15"/>
 
                         <Label
                         Grid.Column="1"
                         Text="{Binding TodayExpense, StringFormat='₹{0:N2}'}"
-                        FontAttributes="Bold" FontSize="16"/>
+                        FontAttributes="Bold" FontSize="15"/>
 
                     </Grid>
 
                     <Grid ColumnDefinitions="*,Auto">
 
-                        <Label Text="This Month" FontSize="14"/>
+                        <Label Text="This Month" FontSize="13"/>
 
                         <Label
                         Grid.Column="1"
                         Text="{Binding ThisMonthExpense, StringFormat='₹{0:N2}'}"
-                        FontAttributes="Bold" FontSize="14"/>
+                        FontAttributes="Bold" FontSize="13"/>
 
                     </Grid>
 
                     <Grid ColumnDefinitions="*,Auto">
 
-                        <Label Text="This Year" FontSize="14"/>
+                        <Label Text="This Year" FontSize="13"/>
 
                         <Label
                         Grid.Column="1"
                         Text="{Binding ThisYearExpense, StringFormat='₹{0:N2}'}"
-                        FontAttributes="Bold" FontSize="14"/>
+                        FontAttributes="Bold" FontSize="13"/>
 
                     </Grid>
 
@@ -81,28 +81,28 @@
 
                     <Label
                     Text="Expense Averages"
-                    FontSize="18"
+                    FontSize="16"
                     FontAttributes="Bold" />
 
                     <Grid ColumnDefinitions="*,Auto">
 
-                        <Label Text="Daily Average" FontSize="14"/>
+                        <Label Text="Daily Average" FontSize="13"/>
 
                         <Label
                         Grid.Column="1"
                         Text="{Binding AverageDailyExpense, StringFormat='₹{0:N2}'}"
-                        FontAttributes="Bold" FontSize="14"/>
+                        FontAttributes="Bold" FontSize="13"/>
 
                     </Grid>
 
                     <Grid ColumnDefinitions="*,Auto">
 
-                        <Label Text="Monthly Average" FontSize="14"/>
+                        <Label Text="Monthly Average" FontSize="13"/>
 
                         <Label
                         Grid.Column="1"
                         Text="{Binding AverageMonthlyExpense, StringFormat='₹{0:N2}'}"
-                        FontAttributes="Bold" FontSize="14"/>
+                        FontAttributes="Bold" FontSize="13"/>
 
                     </Grid>
 
@@ -118,7 +118,7 @@
 
                     <Label
             Text="Top Spending Categories"
-            FontSize="18"
+            FontSize="16"
             FontAttributes="Bold"/>
 
                     <CollectionView
@@ -131,13 +131,13 @@
                                 <Grid ColumnDefinitions="*,Auto">
 
                                     <Label
-                            Text="{Binding Category}" FontSize="14"/>
+                            Text="{Binding Category}" FontSize="13"/>
 
                                     <Label
                             Grid.Column="1"
                             Text="{Binding Amount,
                                            StringFormat='₹{0:N0}'}"
-                            FontAttributes="Bold" FontSize="14"/>
+                            FontAttributes="Bold" FontSize="13"/>
 
                                 </Grid>
 

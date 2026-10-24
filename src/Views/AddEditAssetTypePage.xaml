@@ -5,33 +5,58 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:PersonalFinance.ViewModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:DataType="viewModels:AddEditAssetTypeViewModel"
     Title="{Binding PageTitle}">
 
     <ScrollView>
 
         <VerticalStackLayout
-            Padding="20"
-            Spacing="20">
+            Padding="16"
+            Spacing="12">
 
-            <Label
-                Text="Asset Type"
-                FontAttributes="Bold" />
+            <Border
+                Padding="16"
+                Stroke="{toolkit:AppThemeResource CardStrokeColor}"
+                BackgroundColor="{toolkit:AppThemeResource CardBackgroundColor}">
 
-            <Entry
-                Placeholder="Enter asset type"
-                Text="{Binding Name}" />
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
 
-            <Button
-                Text="Save"
-                Command="{Binding SaveCommand}" />
+                <VerticalStackLayout Spacing="12">
 
-            <Button
-                Text="Delete"
-                Command="{Binding DeleteCommand}"
-                BackgroundColor="IndianRed"
-                TextColor="White"
-                IsVisible="{Binding IsEditMode}" />
+                    <Label
+                        Text="{Binding PageTitle}"
+                        FontSize="22"
+                        FontAttributes="Bold" />
+
+                    <Entry
+                        Placeholder="Asset Type Name"
+                        Text="{Binding Name}" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <Button
+                            Grid.Column="0"
+                            Text="Delete"
+                            Command="{Binding DeleteCommand}"
+                            BackgroundColor="{DynamicResource DangerColor}"
+                            TextColor="{StaticResource White}"
+                            IsVisible="{Binding IsEditMode}" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="Save"
+                            Command="{Binding SaveCommand}" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
 
         </VerticalStackLayout>
 
